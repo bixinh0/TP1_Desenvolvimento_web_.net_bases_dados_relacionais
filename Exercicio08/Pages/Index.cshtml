@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Produtos";
+    var ptBr = new System.Globalization.CultureInfo("pt-BR");
+}
+
+<h1 class="mb-4">Nossos produtos</h1>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th class="text-end">Preço</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model.Produtos)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td class="text-end">@produto.Preco.ToString("C", ptBr)</td>
+                <td class="text-end">
+                    <a asp-page="/Detalhes" asp-route-id="@produto.Id" class="btn btn-sm btn-outline-primary">
+                        Ver detalhes
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

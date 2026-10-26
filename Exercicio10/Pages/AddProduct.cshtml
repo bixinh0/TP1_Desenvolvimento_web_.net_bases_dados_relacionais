@@ -1,0 +1,42 @@
+﻿@page
+@model AddProductModel
+@{
+    ViewData["Title"] = "Cadastrar produto";
+}
+
+<h1 class="mb-4">Cadastrar produto</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Produto.Nome" class="form-label"></label>
+                <input asp-for="Produto.Nome" class="form-control" placeholder="Ex.: Teclado mecânico" />
+                <span asp-validation-for="Produto.Nome" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Produto.Preco" class="form-label"></label>
+                <input asp-for="Produto.Preco" type="text" class="form-control" placeholder="Ex.: 199,90" />
+                <span asp-validation-for="Produto.Preco" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    @if (Model.Enviado)
+    {
+        <div class="col-md-5 offset-md-1 mt-4 mt-md-0">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">Produto cadastrado</div>
+                <div class="card-body">
+                    <p class="mb-2"><strong>Nome:</strong> @Model.Produto.Nome</p>
+                    <p class="mb-0"><strong>Preço:</strong> @Model.Produto.Preco?.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

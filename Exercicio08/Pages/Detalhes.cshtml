@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model DetalhesModel
+@{
+    ViewData["Title"] = Model.Produto!.Nome;
+    var ptBr = new System.Globalization.CultureInfo("pt-BR");
+}
+
+<h1>@Model.Produto.Nome</h1>
+
+<p class="lead">@Model.Produto.Descricao</p>
+<p class="fs-4 fw-bold">@Model.Produto.Preco.ToString("C", ptBr)</p>
+
+<a asp-page="/Index" class="btn btn-secondary">Voltar para a lista</a>
